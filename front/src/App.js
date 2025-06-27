@@ -7,7 +7,6 @@ import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 
 import { AuthProvider, useAuth } from './AuthContext';
 
-// Composants
 import Authors from './components/Authors';
 import Books from './components/Books';
 import AddAuthor from './components/AddAuthor';
@@ -18,13 +17,12 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// ✅ Page d'accueil
 function Home() {
-  const { logout } = useAuth();
+  const { signOut } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();
+    signOut();
     navigate('/signin');
   };
 
@@ -63,7 +61,6 @@ function Home() {
   );
 }
 
-// ✅ App avec AuthProvider + Router
 function App() {
   return (
     <ApolloProvider client={client}>

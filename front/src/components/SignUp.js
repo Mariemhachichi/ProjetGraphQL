@@ -14,14 +14,14 @@ const REGISTER = gql`
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { signIn } = useAuth();
 
   const [form, setForm] = useState({ username: '', password: '' });
   const [error, setError] = useState(null);
 
   const [registerUser, { loading }] = useMutation(REGISTER, {
     onCompleted: (data) => {
-      login(data.register.token);
+      signIn(data.register.token);
       navigate('/');
     },
     onError: (error) => {
